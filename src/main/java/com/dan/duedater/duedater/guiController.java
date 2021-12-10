@@ -3,7 +3,7 @@ package com.dan.duedater.duedater;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class HelloController {
+public class guiController {
     @FXML
     private Label welcomeText;
 

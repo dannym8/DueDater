@@ -100,7 +100,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.dan.duedater.duedater/com.dan.duedater.duedater.HelloApplication</mainClass>
+                            <mainClass>com.dan.duedater.duedater/com.dan.duedater.duedater.Launcher</mainClass>
                         </configuration>
                     </execution>
                 </executions>
