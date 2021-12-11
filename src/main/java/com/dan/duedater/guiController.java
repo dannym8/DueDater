@@ -24,8 +24,17 @@ public class guiController {
 
     }
     // switches toggle button text
+    boolean homework = false;
     @FXML
     void switchToggleText(MouseEvent event) {
-
+        if (!homework) {
+            toggle.setText("Test    ");
+            homework = true;
+            System.out.println("In Test Due Date mode");
+        } else {
+            toggle.setText("Homework");
+            homework = false;
+            System.out.println("In Homework Due Date mode");
+        }
     }
 }
