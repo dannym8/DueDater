@@ -1,20 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dan.duedater.guiController">
    <children>
+      <TextField layoutX="14.0" layoutY="86.0" prefHeight="39.0" prefWidth="581.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <Label layoutX="14.0" layoutY="36.0" prefHeight="50.0" prefWidth="707.0" text="Welcome to DueDater. Start by entering your due dates below." AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="177.0" AnchorPane.topAnchor="36.0">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
       <MenuBar AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
@@ -36,26 +45,26 @@
           </Menu>
         </menus>
       </MenuBar>
-      <SplitPane dividerPositions="0.17637540453074432" layoutY="30.0" orientation="VERTICAL" prefHeight="650.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+      <SplitPane dividerPositions="0.4526112185686654" layoutY="131.0" orientation="VERTICAL" prefHeight="519.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="131.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="117.0" prefWidth="898.0">
                <children>
-                  <Label layoutX="8.0" layoutY="6.0" prefHeight="50.0" prefWidth="707.0" text="Welcome to DueDater. Start by entering your due dates below." AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="183.0" AnchorPane.topAnchor="6.0">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-                  <TextField layoutX="8.0" layoutY="56.0" prefHeight="39.0" prefWidth="659.0">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </TextField>
-                  <Separator layoutX="349.0" layoutY="85.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="84.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="85.0" />
+                  <ListView prefHeight="438.0" prefWidth="898.0">
+                     <contextMenu>
+                        <ContextMenu>
+                           <items>
+                              <MenuItem disable="true" mnemonicParsing="false" text="Complete" />
+                              <MenuItem disable="true" mnemonicParsing="false" text="Edit" />
+                              <MenuItem disable="true" mnemonicParsing="false" text="Pend" />
+                           </items>
+                        </ContextMenu>
+                     </contextMenu>
+                  </ListView>
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <ListView layoutX="8.0" layoutY="6.0" prefHeight="438.0" prefWidth="898.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <ListView layoutX="8.0" layoutY="42.0" prefHeight="463.0" prefWidth="898.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <contextMenu>
                         <ContextMenu>
                           <items>
@@ -69,6 +78,9 @@
                </children>
             </AnchorPane>
         </items>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
       </SplitPane>
    </children>
 </AnchorPane>
