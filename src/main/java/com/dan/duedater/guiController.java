@@ -27,17 +27,25 @@ public class guiController {
     void exitProgram(ActionEvent event) {
 
     }
+
     // Gets user input text and stores it within
     @FXML
     private void userInput(ActionEvent enterKey) {
-        listInput(this.inputField.getText());
-        this.inputField.clear();
+        String input = this.inputField.getText();
+        listInput(input);
     }
+
     // insert input into list
     private void listInput(String input) {
-        dateList.getItems().add(input);
-        System.out.println(input);
+        if (input.length() < 90) {
+            dateList.getItems().add(input);
+            this.inputField.clear();
+        } else {
+            this.inputField.promptTextProperty().set("Enter text here");
+            this.inputField.setPromptText("Due Date exceeds length");
+        }
     }
+
     // switches toggle button text
     boolean homework = false;
     @FXML
