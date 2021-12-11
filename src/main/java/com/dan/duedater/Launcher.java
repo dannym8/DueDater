@@ -1,4 +1,4 @@
-package com.dan.duedater.duedater;
+package com.dan.duedater;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

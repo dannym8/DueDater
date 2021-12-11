@@ -10,6 +10,6 @@ module com.dan.duedater.duedater {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
 
-    opens com.dan.duedater.duedater to javafx.fxml;
-    exports com.dan.duedater.duedater;
+    opens com.dan.duedater to javafx.fxml;
+    exports com.dan.duedater;
 }
