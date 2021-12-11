@@ -18,8 +18,9 @@ public class Launcher extends Application {
         stage.setTitle("DueDater - Keep track of Due Dates");
         stage.setScene(scene);
         stage.show();
-    }
+        stage.setMinWidth(705);
 
+    }
     // All this main method does is run launch()
     public static void main(String[] args) {
         launch();
