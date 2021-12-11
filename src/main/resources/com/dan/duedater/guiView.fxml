@@ -46,23 +46,8 @@
           </Menu>
         </menus>
       </MenuBar>
-      <SplitPane dividerPositions="0.4526112185686654" layoutY="131.0" orientation="VERTICAL" prefHeight="519.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="131.0">
+      <SplitPane layoutY="131.0" orientation="VERTICAL" prefHeight="519.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="131.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="117.0" prefWidth="898.0">
-               <children>
-                  <ListView prefHeight="438.0" prefWidth="898.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <contextMenu>
-                        <ContextMenu>
-                           <items>
-                              <MenuItem disable="true" mnemonicParsing="false" text="Complete" />
-                              <MenuItem disable="true" mnemonicParsing="false" text="Edit" />
-                              <MenuItem disable="true" mnemonicParsing="false" text="Pend" />
-                           </items>
-                        </ContextMenu>
-                     </contextMenu>
-                  </ListView>
-               </children>
-            </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
                   <ListView layoutX="8.0" layoutY="42.0" prefHeight="463.0" prefWidth="898.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
