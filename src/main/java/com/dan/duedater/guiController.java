@@ -2,18 +2,16 @@ package com.dan.duedater;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleButton;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
-
-import java.nio.charset.StandardCharsets;
 
 public class guiController {
     // text field declaration
     @FXML
     public TextField inputField;
+    // list declaration
+    @FXML
+    public ListView<String> dateList;
     // labels declaration
     @FXML
     private Label welcomeText;
@@ -37,6 +35,7 @@ public class guiController {
     }
     // insert input into list
     private void listInput(String input) {
+        dateList.getItems().add(input);
         System.out.println(input);
     }
     // switches toggle button text
