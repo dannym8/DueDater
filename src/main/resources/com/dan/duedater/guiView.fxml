@@ -15,7 +15,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dan.duedater.guiController">
    <children>
-      <TextField layoutX="14.0" layoutY="86.0" prefHeight="39.0" prefWidth="581.0">
+      <TextField fx:id="input" layoutX="8.0" layoutY="87.0" onAction="#onEnter" prefHeight="39.0" prefWidth="581.0">
          <font>
             <Font size="18.0" />
          </font>
