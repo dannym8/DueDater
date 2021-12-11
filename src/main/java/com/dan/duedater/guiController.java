@@ -1,15 +1,23 @@
 package com.dan.duedater;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 
-public class guiController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class guiController implements Initializable {
     // text field declaration
     @FXML
     public TextField inputField;
     // list declaration
+    @FXML
+    public ObservableList<String> observableList = FXCollections.observableArrayList("Item 1", "Item 2");
     @FXML
     public ListView<String> dateList;
     // labels declaration
@@ -22,12 +30,10 @@ public class guiController {
     @FXML
     private ToggleButton toggle;
 
-    // exitProgram() when click on file > exit
-    @FXML
-    void exitProgram(ActionEvent event) {
-
+    // load a list
+    public void initialize(URL location, ResourceBundle resources) {
+        dateList.setItems(observableList);
     }
-
     // Gets user input text and stores it within
     @FXML
     private void userInput(ActionEvent enterKey) {
@@ -59,5 +65,10 @@ public class guiController {
             homework = false;
             System.out.println("In Homework Due Date mode");
         }
+    }
+    // exitProgram() when click on file > exit
+    @FXML
+    void exitProgram(ActionEvent event) {
+
     }
 }
