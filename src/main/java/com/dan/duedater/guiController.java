@@ -13,7 +13,7 @@ import java.nio.charset.StandardCharsets;
 public class guiController {
     // text field declaration
     @FXML
-    public TextField input;
+    public TextField inputField;
     // labels declaration
     @FXML
     private Label welcomeText;
@@ -29,18 +29,16 @@ public class guiController {
     void exitProgram(ActionEvent event) {
 
     }
-    // Submits user input
+    // Gets user input text and stores it within
     @FXML
-    private void onEnter(ActionEvent enterKey) {
-        System.out.println(inputStorage());
-        input.clear();
+    private void userInput(ActionEvent enterKey) {
+        listInput(this.inputField.getText());
+        this.inputField.clear();
     }
-    // Stores user input
-    @FXML
-    private String inputStorage() {
-        return this.input.getText();
+    // insert input into list
+    private void listInput(String input) {
+        System.out.println(input);
     }
-
     // switches toggle button text
     boolean homework = false;
     @FXML
