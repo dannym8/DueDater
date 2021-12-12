@@ -7,7 +7,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -15,9 +14,11 @@ public class guiController implements Initializable {
     // text field declaration
     @FXML
     public TextField inputField;
+    // file input stream
+    String[] listInputStream; // array that fills up list
     // list declaration
     @FXML
-    public ObservableList<String> observableList = FXCollections.observableArrayList("Item 1", "Item 2");
+    public ObservableList<String> observableList = FXCollections.observableArrayList(listInputStream);
     @FXML
     public ListView<String> dateList;
     // labels declaration
