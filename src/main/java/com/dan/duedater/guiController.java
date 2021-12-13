@@ -11,7 +11,9 @@ import javafx.scene.input.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -50,14 +52,16 @@ public class guiController implements Initializable {
     }
     // Gets user input text and stores it within
     @FXML
-    private void userInput(ActionEvent enterKey) {
+    private void userInput(ActionEvent enterKey) throws IOException {
         String input = this.inputField.getText();
         listInput(input);
     }
 
     // insert input into list
-    private void listInput(String input) {
+    private void listInput(String input) throws IOException {
         if (input.length() < 90) {
+            String textInput = String.format("%n");
+            Files.writeString(Path.of("src/duedaterlist.txt"), input + textInput,StandardOpenOption.CREATE, StandardOpenOption.APPEND);
             dateList.getItems().add(input);
             this.inputField.clear();
         } else {
