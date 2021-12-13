@@ -15,7 +15,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dan.duedater.guiController">
    <children>
-      <TextField fx:id="inputField" layoutX="8.0" layoutY="87.0" onAction="#userInput" prefHeight="39.0" prefWidth="581.0">
+      <TextField fx:id="inputField" layoutX="8.0" layoutY="87.0" onAction="#userInput" prefHeight="39.0" prefWidth="581.0" promptText="Enter Dates Here">
          <font>
             <Font size="18.0" />
          </font>
@@ -50,13 +50,12 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <ListView fx:id="dateList" layoutX="8.0" layoutY="42.0" prefHeight="463.0" prefWidth="898.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <ListView fx:id="dateList" editable="true" layoutX="8.0" layoutY="42.0" prefHeight="463.0" prefWidth="898.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <contextMenu>
                         <ContextMenu>
                           <items>
-                            <MenuItem disable="true" mnemonicParsing="false" text="Complete" />
-                              <MenuItem disable="true" mnemonicParsing="false" text="Edit" />
-                              <MenuItem disable="true" mnemonicParsing="false" text="Pend" />
+                            <MenuItem fx:id="complete" disable="false" mnemonicParsing="false"  onAction="#completeCell" text="Complete" />
+                              <MenuItem fx:id="edit" disable="false" mnemonicParsing="false" onAction="#editCell" text="Edit" />
                           </items>
                         </ContextMenu>
                      </contextMenu>

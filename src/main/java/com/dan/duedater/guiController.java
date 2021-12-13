@@ -1,9 +1,11 @@
 package com.dan.duedater;
 
+import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.TextFieldListCell;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
@@ -26,7 +28,7 @@ public class guiController implements Initializable {
     private Label welcomeText;
     // menu items declaration
     @FXML
-    private MenuItem exit;
+    private MenuItem exit, edit, complete, pend;
     // buttons
     @FXML
     private ToggleButton toggle;
@@ -35,22 +37,22 @@ public class guiController implements Initializable {
     public ArrayList<String> arrayList = new ArrayList<>();
     @FXML
     public ListView<String> dateList;
+    //text file path, creates it in users root-drive/DueDater/
     String path =  "/DueDater/DueDater_DONOTDELETE.txt";
-    //text file path
-    //String path = "/Users\\Danny/Documents/duedater/duedater_DONOTDELETE.txt";
 
     public void initialize(URL location, ResourceBundle resources) {
         List<String> rawList;
         try {
-            //create dir
+            //create dir @ root-drive/DueDater
             Files.createDirectories(Path.of("/DueDater"));
-           // Files.createDirectories(Path.of("/Users\\Danny/Documents/duedater"));
             // Gets text from path
             rawList = Files.lines(Paths.get(path)).toList();
             rawList.forEach( x -> dateList.getItems().add(x));
         } catch (IOException e) {
             e.printStackTrace();
         }
+        // Allows double-clicking to edit each cell
+        dateList.setCellFactory(TextFieldListCell.forListView());
     }
     // Gets user input text and stores it within
     @FXML
@@ -60,7 +62,6 @@ public class guiController implements Initializable {
     }
 
     // insert input into list
-
     private void listInput(String input) throws IOException {
         if (input.length() < 90 && input.length() > 5) {
             String lineSeparator = String.format("%n");
@@ -79,7 +80,7 @@ public class guiController implements Initializable {
     @FXML
     private void switchToggleText(MouseEvent event) {
         if (!homework) {
-            toggle.setText("Test    ");
+            toggle.setText("Test      ");
             homework = true;
             System.out.println("In Test Due Date mode");
         } else {
@@ -87,6 +88,16 @@ public class guiController implements Initializable {
             homework = false;
             System.out.println("In Homework Due Date mode");
         }
+    }
+    // edit context menu action
+    @FXML
+    void editCell (ActionEvent e) {
+        dateList.edit(dateList.getItems().indexOf(dateList.getSelectionModel().getSelectedItem()));
+    }
+    // complete context menu action
+    @FXML
+    void completeCell(ActionEvent e) {
+        dateList.getItems().remove(dateList.getSelectionModel().getSelectedItem());
     }
     // exitProgram() when click on file > exit
     @FXML
