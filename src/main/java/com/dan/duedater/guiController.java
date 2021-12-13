@@ -7,7 +7,6 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -36,18 +35,20 @@ public class guiController implements Initializable {
     public ArrayList<String> arrayList = new ArrayList<>();
     @FXML
     public ListView<String> dateList;
+    //text file path
+    String path = "/Users\\Danny/Documents/duedater/duedater_DONOTDELETE.txt";
 
-    //text path
-    String path = "/Users\\Danny/Documents/stuff.txt";
     public void initialize(URL location, ResourceBundle resources) {
         List<String> rawList;
         try {
+            //create dir
+            Files.createDirectories(Path.of("/Users\\Danny/Documents/duedater"));
+            // Gets text from path
             rawList = Files.lines(Paths.get(path)).toList();
             rawList.forEach( x -> dateList.getItems().add(x));
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
     // Gets user input text and stores it within
     @FXML
