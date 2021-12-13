@@ -1,7 +1,5 @@
 package com.dan.duedater;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -9,16 +7,15 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
 
 public class guiController implements Initializable {
     // text field declaration
@@ -40,10 +37,12 @@ public class guiController implements Initializable {
     @FXML
     public ListView<String> dateList;
 
+    //text path
+    String path = "/Users\\Danny/Documents/stuff.txt";
     public void initialize(URL location, ResourceBundle resources) {
         List<String> rawList;
         try {
-            rawList = Files.lines(Paths.get("src/duedaterlist.txt")).toList();
+            rawList = Files.lines(Paths.get(path)).toList();
             rawList.forEach( x -> dateList.getItems().add(x));
         } catch (IOException e) {
             e.printStackTrace();
@@ -58,10 +57,12 @@ public class guiController implements Initializable {
     }
 
     // insert input into list
+
     private void listInput(String input) throws IOException {
         if (input.length() < 90) {
-            String textInput = String.format("%n");
-            Files.writeString(Path.of("src/duedaterlist.txt"), input + textInput,StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+            String lineSeparator = String.format("%n");
+            Files.writeString(Path.of(path), input + lineSeparator,
+                    StandardOpenOption.CREATE, StandardOpenOption.APPEND);
             dateList.getItems().add(input);
             this.inputField.clear();
         } else {
