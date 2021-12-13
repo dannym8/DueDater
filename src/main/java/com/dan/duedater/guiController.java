@@ -39,13 +39,14 @@ public class guiController implements Initializable {
     public ListView<String> dateList;
 
     public void initialize(URL location, ResourceBundle resources) {
-        List<String> list1 = null;
+        List<String> rawList;
         try {
-            list1 = Files.lines(Paths.get("src/duedaterlist.txt")).toList();
+            rawList = Files.lines(Paths.get("src/duedaterlist.txt")).toList();
+            rawList.forEach( x -> dateList.getItems().add(x));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.print(list1);
+
     }
     // Gets user input text and stores it within
     @FXML
