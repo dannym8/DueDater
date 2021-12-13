@@ -7,20 +7,22 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+
+import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class guiController implements Initializable {
     // text field declaration
     @FXML
     public TextField inputField;
-    // file input stream
-    String[] listInputStream; // array that fills up list
-    // list declaration
-    @FXML
-    public ObservableList<String> observableList = FXCollections.observableArrayList(listInputStream);
-    @FXML
-    public ListView<String> dateList;
+
     // labels declaration
     @FXML
     private Label welcomeText;
@@ -30,10 +32,20 @@ public class guiController implements Initializable {
     // buttons
     @FXML
     private ToggleButton toggle;
+    // list declaration
+    @FXML
+    public ArrayList<String> arrayList = new ArrayList<>();
+    @FXML
+    public ListView<String> dateList;
 
-    // load a list
     public void initialize(URL location, ResourceBundle resources) {
-        dateList.setItems(observableList);
+        List<String> list1 = null;
+        try {
+            list1 = Files.lines(Paths.get("src/duedaterlist.txt")).toList();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.print(list1);
     }
     // Gets user input text and stores it within
     @FXML
