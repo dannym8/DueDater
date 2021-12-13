@@ -35,14 +35,16 @@ public class guiController implements Initializable {
     public ArrayList<String> arrayList = new ArrayList<>();
     @FXML
     public ListView<String> dateList;
+    String path =  "/DueDater/DueDater_DONOTDELETE.txt";
     //text file path
-    String path = "/Users\\Danny/Documents/duedater/duedater_DONOTDELETE.txt";
+    //String path = "/Users\\Danny/Documents/duedater/duedater_DONOTDELETE.txt";
 
     public void initialize(URL location, ResourceBundle resources) {
         List<String> rawList;
         try {
             //create dir
-            Files.createDirectories(Path.of("/Users\\Danny/Documents/duedater"));
+            Files.createDirectories(Path.of("/DueDater"));
+           // Files.createDirectories(Path.of("/Users\\Danny/Documents/duedater"));
             // Gets text from path
             rawList = Files.lines(Paths.get(path)).toList();
             rawList.forEach( x -> dateList.getItems().add(x));
@@ -60,7 +62,7 @@ public class guiController implements Initializable {
     // insert input into list
 
     private void listInput(String input) throws IOException {
-        if (input.length() < 90) {
+        if (input.length() < 90 && input.length() > 5) {
             String lineSeparator = String.format("%n");
             Files.writeString(Path.of(path), input + lineSeparator,
                     StandardOpenOption.CREATE, StandardOpenOption.APPEND);
