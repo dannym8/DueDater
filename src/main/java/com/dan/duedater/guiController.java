@@ -51,8 +51,6 @@ public class guiController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        // Allows double-clicking to edit each cell
-        dateList.setCellFactory(TextFieldListCell.forListView());
     }
     // Gets user input text and stores it within
     @FXML
@@ -91,8 +89,17 @@ public class guiController implements Initializable {
     }
     // edit context menu action
     @FXML
-    void editCell (ActionEvent e) {
-        dateList.edit(dateList.getItems().indexOf(dateList.getSelectionModel().getSelectedItem()));
+    void editCell (ActionEvent e) throws IOException {
+        int selectedItem = dateList.getItems().indexOf(dateList.getSelectionModel().getSelectedItem());
+        dateList.edit(selectedItem);
+        rewriteList(selectedItem);
+
+    }
+    // updates text file with new list after changes
+    private void rewriteList(int selectedItem) throws IOException {
+        System.out.println(dateList.getItems().stream().toList());
+        Files.writeString(Path.of(path), dateList.getItems().get(selectedItem),
+                StandardOpenOption.CREATE, StandardOpenOption.APPEND);
     }
     // complete context menu action
     @FXML
