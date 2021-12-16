@@ -9,6 +9,7 @@ module com.dan.duedater.duedater {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
+    requires jdk.compiler;
 
     opens com.dan.duedater to javafx.fxml;
     exports com.dan.duedater;

@@ -54,9 +54,8 @@
                      <contextMenu>
                         <ContextMenu>
                           <items>
-                            <MenuItem fx:id="complete" disable="false" mnemonicParsing="false" text="Complete" />
-                              <MenuItem fx:id="edit" disable="false" mnemonicParsing="false" text="Edit" />
-                              <MenuItem fx:id="pend" disable="true" mnemonicParsing="false" text="Pend" />
+                            <MenuItem fx:id="complete" disable="false" mnemonicParsing="false" onAction="#completeCell" text="Complete" />
+                              <MenuItem fx:id="edit" mnemonicParsing="false" onAction="#editCell" text="Edit" />
                           </items>
                         </ContextMenu>
                      </contextMenu>

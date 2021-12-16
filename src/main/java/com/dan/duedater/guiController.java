@@ -1,13 +1,11 @@
 package com.dan.duedater;
 
-import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldListCell;
 import javafx.scene.input.MouseEvent;
-
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
@@ -28,7 +26,7 @@ public class guiController implements Initializable {
     private Label welcomeText;
     // menu items declaration
     @FXML
-    private MenuItem exit, edit, complete, pend;
+    private MenuItem exit, edit, complete;
     // buttons
     @FXML
     private ToggleButton toggle;
@@ -48,6 +46,7 @@ public class guiController implements Initializable {
             // Gets text from path
             rawList = Files.lines(Paths.get(path)).toList();
             rawList.forEach( x -> dateList.getItems().add(x));
+            dateList.setCellFactory(TextFieldListCell.forListView());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -58,7 +57,6 @@ public class guiController implements Initializable {
         String input = this.inputField.getText();
         listInput(input);
     }
-
     // insert input into list
     private void listInput(String input) throws IOException {
         if (input.length() < 90 && input.length() > 5) {
@@ -72,7 +70,6 @@ public class guiController implements Initializable {
             this.inputField.setPromptText("Due Date exceeds length");
         }
     }
-
     // switches toggle button text
     boolean homework = false;
     @FXML
@@ -89,26 +86,48 @@ public class guiController implements Initializable {
     }
     // edit context menu action
     @FXML
-    void editCell (ActionEvent e) throws IOException {
+    void editCell (ActionEvent e) {
         int selectedItem = dateList.getItems().indexOf(dateList.getSelectionModel().getSelectedItem());
         dateList.edit(selectedItem);
-        rewriteList(selectedItem);
-
+        // listen to pressing enter while editing, works with either edit method
+        dateList.focusedProperty().addListener((arg0, oldPropertyValue, newPropertyValue) -> {
+            if (newPropertyValue) {
+                try {
+                    clearList();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+                refreshList();
+            }
+        });
     }
-    // updates text file with new list after changes
-    private void rewriteList(int selectedItem) throws IOException {
-        System.out.println(dateList.getItems().stream().toList());
-        Files.writeString(Path.of(path), dateList.getItems().get(selectedItem),
-                StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+    // gets new list after changes
+    private void refreshList() {
+        List<String> rawList = dateList.getItems().stream().toList();
+        rawList.forEach(this::writeList);
     }
-    // complete context menu action
+    // writes new list to file
+    private void writeList(String x) {
+        try {
+            String lineSeparator = String.format("%n");
+            Files.writeString(Path.of(path), x + lineSeparator, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    // complete - context menu action
     @FXML
-    void completeCell(ActionEvent e) {
+    void completeCell(ActionEvent e) throws IOException {
         dateList.getItems().remove(dateList.getSelectionModel().getSelectedItem());
+        clearList();
+        refreshList();
+    }
+    // clear list method to use before refresh
+    void clearList() throws IOException {
+        Files.deleteIfExists(Path.of(path));
     }
     // exitProgram() when click on file > exit
     @FXML
     void exitProgram(ActionEvent event) {
-
     }
 }
