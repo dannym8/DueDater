@@ -47,9 +47,24 @@ public class guiController implements Initializable {
             rawList = Files.lines(Paths.get(path)).toList();
             rawList.forEach( x -> dateList.getItems().add(x));
             dateList.setCellFactory(TextFieldListCell.forListView());
+            unfocusListener();
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+    }
+    // listen to pressing enter while editing, works with either edit method
+    private void unfocusListener() {
+        dateList.focusedProperty().addListener((arg0, oldPropertyValue, newPropertyValue) -> {
+            if (newPropertyValue) {
+                try {
+                    clearList();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+                refreshList();
+            }
+        });
     }
     // Gets user input text and stores it within
     @FXML
@@ -89,17 +104,6 @@ public class guiController implements Initializable {
     void editCell (ActionEvent e) {
         int selectedItem = dateList.getItems().indexOf(dateList.getSelectionModel().getSelectedItem());
         dateList.edit(selectedItem);
-        // listen to pressing enter while editing, works with either edit method
-        dateList.focusedProperty().addListener((arg0, oldPropertyValue, newPropertyValue) -> {
-            if (newPropertyValue) {
-                try {
-                    clearList();
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
-                refreshList();
-            }
-        });
     }
     // gets new list after changes
     private void refreshList() {
