@@ -9,8 +9,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
-import static jdk.xml.internal.SecuritySupport.getResourceAsStream;
-
 public class Launcher extends Application {
     final static int SCREEN_WIDTH = 715;
     final static int SCREEN_HEIGHT = 650;

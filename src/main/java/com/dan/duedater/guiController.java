@@ -5,7 +5,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldListCell;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.input.*;
+
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
@@ -53,6 +54,7 @@ public class guiController implements Initializable {
         }
 
     }
+
     // listen to pressing enter while editing, works with either edit method
     private void unfocusListener() {
         dateList.focusedProperty().addListener((arg0, oldPropertyValue, newPropertyValue) -> {
@@ -134,4 +136,32 @@ public class guiController implements Initializable {
     @FXML
     void exitProgram(ActionEvent event) {
     }
+    // drag and drop handling segment
+    public void onDragDetected(MouseEvent mouseEvent) {
+        if (dateList.getItems() == null) {
+            return;
+        }
+        Dragboard dragboard = dateList.startDragAndDrop(TransferMode.MOVE);
+        ClipboardContent content = new ClipboardContent();
+        content.putString(String.valueOf(dateList.getItems()));
+        dragboard.setContent(content);
+        mouseEvent.consume();
+        System.out.println("DragDetected");
+    }
+    public void onDragDone(DragEvent dragEvent) {
+        dragEvent.consume();
+    }
+    public void onDragDropped(DragEvent dragDropped) {
+    }
+    public void onDragEntered(DragEvent dragEntered) {
+       dateList.setOpacity(0.3);
+    }
+    public void onDragExited(DragEvent dragExited) {
+        dateList.setOpacity(1);
+    }
+    public void onDragOver(DragEvent dragOver) {
+        dragOver.acceptTransferModes(TransferMode.MOVE);
+        dragOver.consume();
+    }
+
 }
