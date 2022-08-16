@@ -82,7 +82,7 @@ public class guiController implements Initializable {
             String lineSeparator = String.format("%n");
             Files.writeString(Path.of(path), input + lineSeparator,
                     StandardOpenOption.CREATE, StandardOpenOption.APPEND);
-            dateList.getItems().add(input);
+            dateList.getItems().add(" " + input);
             this.inputField.clear();
         } else {
             this.inputField.promptTextProperty().set("Enter text here");

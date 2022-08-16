@@ -1,8 +1,29 @@
+.list-view {
+-fx-background-color: #4f0079;
+}
 .list-view .list-cell:even {
--fx-background-color: blue;
--fx-text-fill: black;
+-fx-background-color:  #4f0079;
+-fx-cell-size: 30;
+-fx-font-size:18;
+-fx-border-width: 0px;
+-fx-text-fill: white;
 }
 .list-view .list-cell:odd {
--fx-background-color: blue;
--fx-text-fill: black;
+-fx-background-color:  #4f0079;
+-fx-cell-size: 30;
+-fx-font-size:18;
+-fx-border-width: 0px;
+-fx-text-fill: white;
+}
+.list-view .list-cell:filled:hover {
+    -fx-background-color: #18191A; /* 2 */
+    -fx-text-fill: white; /* 5 */
+}
+.list-view .list-cell:filled:hover {
+    -fx-background-color: #18191A; /* 2 */
+}
+.list-view, .split-pane, .list-view .list-cell { -fx-background-insets: 0; -fx-padding: 0; }
+#anchor, #split, #label {
+-fx-background-color: #18191A;
+-fx-text-fill:white;
 }
