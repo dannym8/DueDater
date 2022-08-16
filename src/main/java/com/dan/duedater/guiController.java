@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldListCell;
 import javafx.scene.input.*;
+import javafx.scene.paint.Color;
 
 import java.io.IOException;
 import java.net.URL;
@@ -36,6 +37,7 @@ public class guiController implements Initializable {
     public ArrayList<String> arrayList = new ArrayList<>();
     @FXML
     public ListView<String> dateList;
+
     //text file path, creates it in users root-drive/DueDater/
     String path =  "/DueDater/DueDater_DONOTDELETE.txt";
 

@@ -19,6 +19,7 @@ public class Launcher extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(Launcher.class.getResource("guiView.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), SCREEN_WIDTH, SCREEN_HEIGHT);
         stage.getIcons().add(new Image(Objects.requireNonNull(Main.class.getResourceAsStream("favicon.png"))));
+        scene.getStylesheets().add(getClass().getResource("/listStyle.css").toExternalForm());
         stage.setMinWidth(715);
         stage.setTitle("DueDater - Keep track of Due Dates");
         stage.setScene(scene);
